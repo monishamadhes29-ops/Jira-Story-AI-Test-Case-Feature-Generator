@@ -290,7 +290,14 @@ npm install          # installs root + frontend + backend workspaces
 
 ### 2. Configure environment
 
-Create **`.env`** in the project root:
+Copy the example files and fill in your own values:
+
+```bash
+cp .env.example .env
+cp frontend/.env.example frontend/.env
+```
+
+Root **`.env`**:
 
 ```env
 PORT=8090
@@ -306,7 +313,7 @@ JIRA_EMAIL=you@example.com
 JIRA_API_KEY=your_jira_api_token
 ```
 
-Create **`frontend/.env`**:
+**`frontend/.env`**:
 
 ```env
 # Must match PORT in the root .env
@@ -339,6 +346,7 @@ npm run build --workspace=frontend       # production build of the UI
 ```text
 user-story-to-tests/
 ├── .env                          # Backend secrets & config (git-ignored)
+├── .env.example                  # Template for .env
 ├── package.json                  # Workspaces + `npm run dev`
 ├── .github/
 │   └── agents/
@@ -357,7 +365,8 @@ user-story-to-tests/
 │           ├── feature.ts        # POST /api/feature-file (Gherkin builder)
 │           └── jira.ts           # /api/jira/verify | connect | fetch-story
 └── frontend/
-    ├── .env                      # VITE_API_BASE_URL
+    ├── .env                      # VITE_API_BASE_URL (git-ignored)
+    ├── .env.example              # Template for frontend/.env
     ├── index.html
     ├── vite.config.ts
     └── src/
